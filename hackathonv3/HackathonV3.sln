@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonV3", "HackathonV3\HackathonV3.csproj", "{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.Debug|iPhone.Build.0 = Debug|iPhone
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.Release|iPhone.ActiveCfg = Release|iPhone
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.Release|iPhone.Build.0 = Release|iPhone
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{B41640A3-21C1-4FD0-8C28-37ACC4ACEDF8}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = HackathonV3\HackathonV3.csproj
+	EndGlobalSection
+EndGlobal
