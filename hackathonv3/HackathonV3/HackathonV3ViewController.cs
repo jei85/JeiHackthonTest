@@ -6,6 +6,7 @@ using MonoTouch.UIKit;
 using System.Collections.Generic;
 using MonoTouch.MediaPlayer;
 using MonoTouch.AVFoundation;
+using System.Threading;
 
 namespace HackathonV3
 {
@@ -48,14 +49,14 @@ namespace HackathonV3
 			ovelserListe = new List<Ovelse>();
 			Ovelse o = new Ovelse();
 			o.OvelseId = 1;
-			o.Ovelsenavn = "Benkpress";
+			o.Ovelsenavn = "bench";
 			o.Reps = 10;
 			o.Set = 2;
 			o.Kilo = 10;
 
 			Ovelse o1 = new Ovelse ();
 			o1.OvelseId = 2;
-			o1.Ovelsenavn = "Situps";
+			o1.Ovelsenavn = "situp";
 			o1.Reps = 10;
 			o1.Set = 2;
 			o1.Kilo = 0;
@@ -63,7 +64,7 @@ namespace HackathonV3
 
 			Ovelse o2 = new Ovelse ();
 			o2.OvelseId = 2;
-			o2.Ovelsenavn = "Knebøy";
+			o2.Ovelsenavn = "knee";
 			o2.Reps = 10;
 			o2.Set = 2;
 			o2.Kilo = 0;
@@ -247,6 +248,17 @@ this.transportSelected = this.transportList[0];
 		
 			Ovelse selOvelse = parentController.ovelserListe [0];
 
+			List<string> trackList = new List<string> ();
+			trackList.Add (selOvelse.Ovelsenavn + ".mp3");
+			trackList.Add(selOvelse.Kilo + ".mp3");
+			trackList.Add("kilo.mp3");
+			trackList.Add(selOvelse.Reps + ".mp3");
+			trackList.Add("reps.mp3");
+			trackList.Add(selOvelse.Set + ".mp3");
+			trackList.Add("set.mp3");
+			PlayAudioVariant (trackList);
+
+			/*
 			//spill sang basert på det som ligger på selected øvelse
 			PlayAudio (selOvelse.Ovelsenavn + ".mp3");		 
 			PlayAudio (selOvelse.Kilo + ".mp3");
@@ -255,7 +267,7 @@ this.transportSelected = this.transportList[0];
 			PlayAudio ("reps.mp3");
 			PlayAudio (selOvelse.Set + ".mp3");
 			PlayAudio ("set.mp3");
-
+			*/
 			//label1.Text = parentController.LabelText;
 			//parentController.View.AddSubview (label1);
 				
@@ -265,11 +277,33 @@ this.transportSelected = this.transportList[0];
 
 		}
 
-
+		bool IsAudioFinished (object sender, AVStatusEventArgs e) 
+		{
+			return e.Status;
+		}
 		void HandleAudioFinished (object sender, AVStatusEventArgs e) 
 		{
 			KillAudioPlayer(); // killing audio player from here causes app to crash
 		}
+
+		void PlayAudioVariant (List<string> listOfFiles)
+		{
+
+			foreach (string item in listOfFiles) 
+			{
+				var url = NSUrl.FromFilename(item);
+				parentController.player = AVAudioPlayer.FromUrl(url);    
+				//parentController.player.FinishedPlaying += HandleAudioFinished; 
+				parentController.player.Play();
+
+				int milliseconds = 1500;
+				Thread.Sleep (milliseconds);
+			}
+			parentController.player.FinishedPlaying += HandleAudioFinished; 
+
+
+
+			}
 
 		void PlayAudio (string fileName)
 		{
@@ -282,11 +316,14 @@ this.transportSelected = this.transportList[0];
 			}
 			else{
 				var url = NSUrl.FromFilename(fileName);
-				//AVAudioPlayer player = AVAudioPlayer.FromUrl(url);    
+				//AVAudioPlayer player = AVAudioPlayer.FromUrl(url);  
+
+
 				parentController.player = AVAudioPlayer.FromUrl(url);    
 				parentController.player.FinishedPlaying += HandleAudioFinished; 
 				//(sender, e) => { player.Dispose(); };
 				parentController.player.Play();
+
 			}}
 
 		void KillAudioPlayer ()
